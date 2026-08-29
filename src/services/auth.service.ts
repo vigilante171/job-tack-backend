@@ -1,5 +1,5 @@
 import Bcrypt from 'bcrypt'
-import User, { IUser } from '../models/user.js'
+import User, {IUser} from '../models/User.js'
 import {RegisterInput} from '../validators/auth.validator.js'
 export const registerUser = async (input : RegisterInput) =>{
     const {name , email ,password } = input ;
@@ -10,7 +10,7 @@ export const registerUser = async (input : RegisterInput) =>{
         throw new Error("Email already registered");
     }
     const hashedPassword =await Bcrypt.hash(password, 12);
-   const user = await User.create({
+   const user:IUser = await User.create({
     name:name.trim(),
     email:normalizedEmail,
     password :hashedPassword
