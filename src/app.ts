@@ -1,4 +1,5 @@
 import express from 'express'
+import authRoutes from '../src/routes/auth.routes.js'
 import cors from 'cors'
 import helmet from 'helmet'
 const app=express()
@@ -11,4 +12,5 @@ app.get("/api/v1/health",(rea,res)=>{
         message:"Job tracker api is running "
     })
 })
+app.use("api/vi/auth" , authRoutes)
 export default app;
